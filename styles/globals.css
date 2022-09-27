@@ -29,6 +29,8 @@ a {
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .episode-list {
@@ -36,13 +38,14 @@ a {
   flex-wrap: wrap;
   gap: 16px;
   list-style-type: none;
-  padding-left: 16px;
+  padding: 0;
 }
 
 .episode {
   padding: 24px;
   background-color: #282828;
   border-radius: 8px;
+  width: 100%;
 }
 
 .episode-title {
@@ -54,6 +57,19 @@ a {
 .episode time {
   color: rgba(255, 255, 255, 0.6);
 }
+
 .episode-ep {
   margin: 2px;
+}
+
+.load-more {
+  padding: 16px;
+  background-color: rgb(55, 107, 204);
+  color: white;
+  text-align: center;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 16px;
 }

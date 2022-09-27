@@ -8,7 +8,7 @@ export type EpisodesQueryVariables = Types.Exact<{
 }>;
 
 
-export type EpisodesQuery = { __typename?: 'Query', episodes?: { __typename?: 'Episodes', results?: Array<{ __typename?: 'Episode', air_date?: string | null, created?: string | null, episode?: string | null, name?: string | null } | null> | null } | null };
+export type EpisodesQuery = { __typename?: 'Query', episodes?: { __typename?: 'Episodes', results?: Array<{ __typename?: 'Episode', air_date?: string | null, created?: string | null, episode?: string | null, name?: string | null } | null> | null, info?: { __typename?: 'Info', next?: number | null, prev?: number | null } | null } | null };
 
 
 export const EpisodesDocument = gql`
@@ -19,6 +19,10 @@ export const EpisodesDocument = gql`
       created
       episode
       name
+    }
+    info {
+      next
+      prev
     }
   }
 }

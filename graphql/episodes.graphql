@@ -6,5 +6,9 @@ query Episodes($page: Int) {
       episode
       name
     }
+    info {
+      next
+      prev
+    }
   }
 }

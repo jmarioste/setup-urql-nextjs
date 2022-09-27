@@ -1,14 +1,11 @@
 import type { NextPage } from "next";
 import { useEpisodesQuery } from "../graphql/episodes.gql";
+import { useLoadEpisodes } from "../hooks/useLoadEpisodes";
 
 const Home: NextPage = () => {
-  const [{ data }] = useEpisodesQuery({
-    variables: {
-      page: 1,
-    },
-  });
+  const { items, hasNext, loadMore, fetching } = useLoadEpisodes();
 
-  const episodes = data?.episodes?.results;
+  const episodes = items;
   return (
     <div className="container">
       <ol className="episode-list">
@@ -24,6 +21,12 @@ const Home: NextPage = () => {
           );
         })}
       </ol>
+      {fetching && <p>Loading...</p>}
+      {!fetching && hasNext && (
+        <button className="load-more" onClick={loadMore}>
+          Load more
+        </button>
+      )}
     </div>
   );
 };
