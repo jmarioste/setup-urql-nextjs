@@ -8,9 +8,7 @@ export const useLoadEpisodes = () => {
   const [page, setPage] = useState(1);
 
   const [{ data, fetching }] = useEpisodesQuery({
-    variables: {
-      page: page,
-    },
+    variables: {},
   });
 
   const episodes = data?.episodes?.results ?? [];
