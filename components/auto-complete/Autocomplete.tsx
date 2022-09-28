@@ -1,8 +1,5 @@
 import classNames from "classnames";
 import React, { memo, useRef, useState } from "react";
-import { useDebounce } from "usehooks-ts";
-
-//items that showup in the dropdown
 
 type Props = {
   items: string[];
@@ -16,8 +13,9 @@ const Autocomplete = (props: Props) => {
   const [open, setOpen] = useState(false);
   return (
     <div
+      // use classnames here to easily toggle dropdown open
       className={classNames({
-        "dropdown dropdown-end w-full": true,
+        "dropdown w-full": true,
         "dropdown-open": open,
       })}
       ref={ref}
@@ -30,9 +28,17 @@ const Autocomplete = (props: Props) => {
         placeholder="Type something.."
         tabIndex={0}
       />
-      <div className="dropdown-content bg-base-200 top-14 max-h-96 overflow-auto flex-col rounded-md">
+      {/* add this part */}
+      <div
+        // easily organize the classes here using classNames.
+        className={classNames({
+          "dropdown-content bg-base-200 top-14 max-h-96": true,
+          "overflow-auto flex-col rounded-md": true,
+        })}
+      >
         <ul
           className="menu menu-compact "
+          // use ref to calculate the width of parent
           style={{ width: ref.current?.clientWidth }}
         >
           {items.map((item, index) => {
@@ -51,6 +57,7 @@ const Autocomplete = (props: Props) => {
             );
           })}
         </ul>
+        {/* add this part */}
       </div>
     </div>
   );
